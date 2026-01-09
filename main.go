@@ -1,88 +1,90 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
-// porvided by go library ,you dont need to invoke it by yourslef ,it gets called automatically before main
-func init() {
-	fmt.Println("I will be called before main")
+type (
+	// ID is user-defined data type
+	ID uint32
+	// Name is user-defined data type
+	Name string
+	// Surname is user-defined data type
+	Surname string
+)
+
+// currency is my own custom type or we can call it as user defined type
+type Currency int32
+
+func convert(g Currency) {
+	fmt.Println(g)
+}
+
+type Human struct {
+	Legs      int
+	Fingers   int
+	HairColor string
+}
+
+func NewHuman(legs, finger int, haircolor string) Human {
+	return Human{
+		Legs:      legs,
+		Fingers:   finger,
+		HairColor: haircolor,
+	}
+}
+
+// This is a method
+func (h Human) Walk() { // h is  a receiver
+	fmt.Println("hello world")
+}
+
+type Circle struct {
+	Radius int
 }
 
 func main() {
-	fmt.Println("Main is called")
+	var g Currency
+	fmt.Println(reflect.TypeOf(g))
+	convert(g)
+	//g = 90
+	//fmt.Println(g)
+	//
+	//var name Name
+	//name = Name("shubham")
 
-	//// annonymous function or lmabda function they dnt need to have name
-	//c := func(param int) int {
-	//	/// you can put logic
-	//	fmt.Println(param)
-	//	return 2 * 2
-	//}(2)
+	// type conversion
+	g = 9
+	fmt.Println(reflect.TypeOf(g))
+	// we can do type conversion and we can convert it to float
+	h := float32(g) // type conversion
+	fmt.Println(reflect.TypeOf(h))
 
+	//eswar := Human{
+	//	Legs:      2,
+	//	Fingers:   20,
+	//	HairColor: "Black",
+	//}
+
+	hrithik := NewHuman(2, 21, "blonde")
+
+	fmt.Println(hrithik.Fingers)
+
+	//// anonymous
+	//d := struct {
+	//	Name string
+	//}{
+	//	Name: "shubham",
+	//}
+
+	//var c Circle
+	//c.Radius = 9
 	//fmt.Println(c)
-
-	//func() {
 	//
-	//}()
-
-	//c := foo()
-	//
-	//// c is also a function
-	//
-	//c()
-
-	applyOperation(func(x int) int {
-		if x%2 == 0 {
-			return x * 2
-		} else {
-			return x * 3
-		}
-
-	})
-
-	gh(2)
+	hrithik.Walk()
 }
 
-// function foo is a higher order  function because it is returning a function
-func foo() func() int {
-
-	// i can return a function from it
-	return func() int {
-		return 2
-	}
-}
-
-// bar is a higher order function as well
-// param is a call back function
-func bar(param func(p int) int) {
-	param(2)
-}
-
-/**
-Write a Go program that demonstrates a higher-order function.
- 1. Create a higher-order function named applyOperation that:
- • Accepts another function as a parameter
- • The passed function should take an integer and return an integer
- 2. Inside applyOperation:
- • Use a for loop to iterate from 1 to 5
- • For each number, call the passed function
- • Print the returned result
- 3. In main:
- • Pass an anonymous function to applyOperation
- • The anonymous function should use if–else logic:
- • If the number is even, return n * 2
- • If the number is odd, return n * 3
-
-*/
-
-func gh(p int) {
-
-}
-
-func hj(k func(ji int) int) {
-
-}
-func applyOperation(p func(x int) int) {
-	for i := 1; i <= 5; i++ {
-		ret := p(i)
-		fmt.Println(ret)
-	}
-}
+// ----go is not an object oriented progrmaming language it has objects
+// object is just a real world entity which we represent in our code
+/// - how an object --what object contains ---> object has properties and object has behaviour

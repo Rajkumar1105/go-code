@@ -121,7 +121,7 @@ package main
 //// You have to setup a go app and with   one folder and it  should be called as
 //// directions it will have a file called called direction.go and it will contain all the const values
 //// of directions for ex const North=1 and so on
-//// print these directions in main.go file
+//// print these directions in mainv3.go file
 //
 //// void ff
 //// A function is a set of encapsulated code that you can re use as many times as you want
@@ -139,7 +139,7 @@ package main
 //
 //// Now create a function that takes 5 int parameters   in the package called as fun paclage and the file would fun.go inside the package
 //// Now calculate the sum the difference and the product of all five numbers and return it
-//// you have to call it inside the main.go
+//// you have to call it inside the mainv3.go
 //
 //func conditionals(param int) {
 //	// if else else if  switch statments
