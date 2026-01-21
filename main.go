@@ -10,6 +10,7 @@ import (
 	"go-code/funPackage"
 	"go-code/highOrder"
 	"go-code/ifElse"
+	"go-code/interfaces"
 	"go-code/loopPrc"
 	"go-code/objectsPkg"
 )
@@ -178,6 +179,26 @@ fmt.Println(std2,stud.IsPassed(std2),stud.Grd(std2))
 	fmt.Println("Last Transaction:", MyBank.Account2.LastTxn)
 
 	fmt.Println("Bank Total Funds:", MyBank.GetBankTotalFunds())
+
+	//Interfaces
+	mc:=interfaces.McDonalds{
+		Menu:"Extra Spicy Burger, French Friess, Sprite",
+		FoodPrepResult:"Food Prepared Successfully and will be served within 5 mins !!",
+		Location:"Hyderabad",
+	}
+	kf:=interfaces.KFC{
+		Menu:"Fried Chicken from Kentucky, Cheese Pizza, Fanta",
+		FoodPrepResult:"Food Preparaton is in progress , Thankyou for your Patience  !!",
+		Location:"Bangalore",
+	}
+	bk:=interfaces.BurgerKing{
+		Menu:"chicken Lollipops, Pizza , Thumbs Up",
+		FoodPrepResult:"Food Prepared Successfully  Be Ready to eat !!",
+		Location:"Karimnagar",
+	}
+	interfaces.Operate(mc)
+	interfaces.Operate(kf)
+	interfaces.Operate(bk)
 }
 
 //User Defined Functions
@@ -212,5 +233,4 @@ func (s stud) Grd()string{
 		return "F"
 	}
 }
-
 
