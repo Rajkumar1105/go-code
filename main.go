@@ -13,6 +13,7 @@ import (
 	"go-code/interfaces"
 	"go-code/loopPrc"
 	"go-code/objectsPkg"
+	
 )
 
 func main() {
@@ -199,6 +200,17 @@ fmt.Println(std2,stud.IsPassed(std2),stud.Grd(std2))
 	interfaces.Operate(mc)
 	interfaces.Operate(kf)
 	interfaces.Operate(bk)
+	
+	//Area Interface
+	rect:=interfaces.Rectangle{
+		Width:10.50,
+		Height:12.50,
+	}
+	cir:=interfaces.Circle{
+		Radius:25.00,
+	}
+	fmt.Println("Area of Rectangle is: ",interfaces.CalculateArea(rect))
+	fmt.Println("Area of Circle is:",interfaces.CalculateArea(cir))
 }
 
 //User Defined Functions
