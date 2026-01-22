@@ -84,4 +84,87 @@ func main() {
 	Party(3)
 	Party("ssay")
 	Party(mahesh)
+
+	mc := McDonalds{
+		Location: "Hyderabad",
+		Menu:     "Burger,MMc Maharaja ,alootokki",
+	}
+
+	//fmt.Println(mc.GetMenu())
+
+	Operator(mc)
+}
+
+func Operator(fr Franchise) {
+	fmt.Println(fr.PrepareFood())
+	fmt.Println(fr.GetLocation())
+	fmt.Println(fr.GetMenu())
+}
+
+type Data2 struct {
+}
+
+/**
+   Functional Requirements
+	1.	Define an interface named Franchise that declares the following methods:
+	•	PrepareFood() string
+	•	GetMenu() []string
+	•	GetLocation() string
+	2.	Create at least three different franchises (e.g., McDonald’s, KFC, Burger King) that implement the Franchise interface.
+	•	Each franchise must return:
+	•	a unique menu
+	•	a unique food preparation result
+	•	a different location
+	3.	Implement a function named Operate(fr Franchise) that:
+	•	Accepts a Franchise interface
+	•	Prints the franchise location
+	•	Prints the menu
+	•	Prepares food
+
+Type Franchise interface{
+   PrepareFood() string
+	•	GetMenu() []string
+	•	GetLocation() string
+
+}
+*/
+
+type Franchise interface {
+	PrepareFood() string
+	GetMenu() string
+	GetLocation() string
+}
+
+type McDonalds struct {
+	Menu     string
+	Location string
+}
+
+func (m McDonalds) PrepareFood() string {
+	return "Preparing food"
+}
+
+func (m McDonalds) GetMenu() string {
+	return m.Menu
+}
+
+func (m McDonalds) GetLocation() string {
+	return m.Location
+}
+
+type KFC struct {
+	Menu    string
+	Addrses string
+}
+
+func (m KFC) PrepareFood() string {
+	return "Preparing food"
+}
+
+func (m KFC) GetMenu() string {
+	return m.Menu
+}
+
+func (m KFC) GetLocation() string {
+	return m.Addrses
 }
