@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"os"
+)
 
 // interfaces --have some kind of contract or some kind of agreement with the objects
 type Humans struct {
@@ -84,15 +88,17 @@ func main() {
 	Party(3)
 	Party("ssay")
 	Party(mahesh)
-
-	mc := McDonalds{
-		Location: "Hyderabad",
-		Menu:     "Burger,MMc Maharaja ,alootokki",
-	}
+	//
+	//mc := McDonalds{
+	//	Location: "Hyderabad",
+	//	Menu:     "Burger,MMc Maharaja ,alootokki",
+	//}
 
 	//fmt.Println(mc.GetMenu())
 
-	Operator(mc)
+	//Operator(mc)
+	err := ReadFile()
+	fmt.Println(err)
 }
 
 func Operator(fr Franchise) {
@@ -167,4 +173,58 @@ func (m KFC) GetMenu() string {
 
 func (m KFC) GetLocation() string {
 	return m.Addrses
+}
+
+type CustomError struct {
+}
+
+func (c CustomError) Error() string {
+	return "my cistom error"
+}
+
+func foo23() error {
+	return CustomError{} // this red line should go
+}
+
+// I want to make the CustomError of type error what all I have to do !!!
+
+func ReadFile() error {
+	open, err := os.Open("./main47.go")
+
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("fp", open)
+	return nil
+}
+
+/// Create a function divide ,whihc returns an error if the number passed is 0 ,it should take two numbers
+//// it should return error and the dividde value   // fh()== err ,value
+// fmt.ErrorF() // formatted error
+// custom error
+// errors.New()
+
+func DivideMe(a, b int) (int, error) {
+	if b == 0 {
+		return 0, fmt.Errorf("erorr dividing by %d", b) // %d for integer ,%s for string
+	}
+
+	return a / b, nil
+}
+
+func DivideMe2(a, b int) (int, error) {
+	if b == 0 {
+		return 0, errors.New("error dividing by zero")
+	}
+
+	return a / b, nil
+}
+
+func DivideMe23(a, b int) (int, error) {
+	if b == 0 {
+		return 0, CustomError{}
+	}
+
+	return a / b, nil
 }
