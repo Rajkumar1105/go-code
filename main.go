@@ -13,6 +13,7 @@ import (
 	"go-code/interfaces"
 	"go-code/loopPrc"
 	"go-code/objectsPkg"
+	"go-code/errorHandling"
 	
 )
 
@@ -211,6 +212,17 @@ fmt.Println(std2,stud.IsPassed(std2),stud.Grd(std2))
 	}
 	fmt.Println("Area of Rectangle is: ",interfaces.CalculateArea(rect))
 	fmt.Println("Area of Circle is:",interfaces.CalculateArea(cir))
+
+	//Error Handling
+	value, err := errorHandling.Divide(10, 0)
+	
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println("Result:", value)
+
 }
 
 //User Defined Functions
