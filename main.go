@@ -69,36 +69,39 @@ func Party(p interface{}) {
 // interface{} is a super type and every object and every built in type satisfies it
 func main() {
 
-	mahesh := Humans{
-		Name: "Mahesh",
-	}
-
-	mahesh.Eat()
-	mahesh.Angry()
-	mahesh.Hunt()
-	mahesh.Speak()
-	mahesh.Play()
-
-	// We can say mahesh is animal
-
-	//tiger := Cat{
-	//	Tail: 1,
+	//mahesh := Humans{
+	//	Name: "Mahesh",
 	//}
-
-	Party(3)
-	Party("ssay")
-	Party(mahesh)
 	//
-	//mc := McDonalds{
-	//	Location: "Hyderabad",
-	//	Menu:     "Burger,MMc Maharaja ,alootokki",
-	//}
+	//mahesh.Eat()
+	//mahesh.Angry()
+	//mahesh.Hunt()
+	//mahesh.Speak()
+	//mahesh.Play()
+	//
+	//// We can say mahesh is animal
+	//
+	////tiger := Cat{
+	////	Tail: 1,
+	////}
+	//
+	//Party(3)
+	//Party("ssay")
+	//Party(mahesh)
+	////
+	////mc := McDonalds{
+	////	Location: "Hyderabad",
+	////	Menu:     "Burger,MMc Maharaja ,alootokki",
+	////}
+	//
+	////fmt.Println(mc.GetMenu())
+	//
+	////Operator(mc)
+	////err := ReadFile()
+	////fmt.Println(err)
 
-	//fmt.Println(mc.GetMenu())
-
-	//Operator(mc)
-	err := ReadFile()
-	fmt.Println(err)
+	//fmt.Println(DivideMe235(4, 0))
+	doPanic()
 }
 
 func Operator(fr Franchise) {
@@ -227,4 +230,13 @@ func DivideMe23(a, b int) (int, error) {
 	}
 
 	return a / b, nil
+}
+
+func DivideMe235(a, b int) int {
+
+	return a / b
+}
+
+func doPanic() {
+	panic("I am panicking")
 }
