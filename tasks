@@ -1,0 +1,142 @@
+Design and implement a console-based banking system in Go that models real-world banking operations using structs and methods only.
+The system must simulate account management, transactions, and basic banking rules without using slices, maps, arrays, or databases.
+
+
+
+🧱 Core Entities (Design Requirement)
+
+1️⃣ Customer
+
+Each customer represents a real bank user.
+
+Fields (example-level guidance, not mandatory):
+	•	CustomerID
+	•	FullName
+	•	Age
+	•	PhoneNumber
+	•	IsActive
+
+Rules:
+	•	Customer must be 18+
+	•	Inactive customers cannot perform transactions
+
+⸻
+
+2️⃣ BankAccount
+
+Each customer owns exactly one bank account.
+
+Fields:
+	•	AccountNumber
+	•	AccountType (Savings / Current)
+	•	Balance
+	•	IsFrozen
+
+Rules:
+	•	Minimum balance:
+	•	Savings: ₹1,000
+	•	Current: ₹5,000
+	•	Frozen accounts cannot:
+	•	Withdraw
+	•	Transfer
+	•	Balance must never go negative
+
+⸻
+
+3️⃣ Bank
+
+Represents the bank itself.
+
+Fields:
+	•	BankName
+	•	IFSCCode
+	•	TotalFunds
+	•	Fixed number of customers (example: exactly 3 customers as struct fields)
+
+⚠️ Since slices/maps are not allowed, customers must be stored like:
+	•	Customer1
+	•	Customer2
+	•	Customer3
+
+⸻
+
+4️⃣ Transaction
+
+Each transaction records a single operation.
+
+Fields:
+	•	TransactionID
+	•	AccountNumber
+	•	TransactionType (Deposit / Withdraw / Transfer)
+	•	Amount
+	•	Status (Success / Failed)
+
+⚠️ Only the last transaction needs to be stored per account.
+
+⸻
+
+⚙️ Required Operations (Methods)
+
+Customer-Level Methods
+	•	ActivateCustomer()
+	•	DeactivateCustomer()
+	•	IsEligibleForBanking()
+
+⸻
+
+Account-Level Methods
+	•	Deposit(amount)
+	•	Withdraw(amount)
+	•	GetBalance()
+	•	FreezeAccount()
+	•	UnfreezeAccount()
+
+Validation must include:
+	•	Account status
+	•	Customer status
+	•	Minimum balance rule
+
+⸻
+
+Bank-Level Methods
+	•	OpenAccount(customer)
+	•	CloseAccount(accountNumber)
+	•	TransferFunds(fromAccount, toAccount, amount)
+	•	GetBankTotalFunds()
+
+⸻
+
+Transaction-Level Methods
+	•	CreateTransaction()
+	•	MarkSuccess()
+	•	MarkFailed(reason)
+
+⸻
+
+🔁 Application Flow (Simulation)
+	1.	Create a Bank instance
+	2.	Create fixed number of customers
+	3.	Open accounts for customers
+	4.	Perform:
+	•	Deposits
+	•	Withdrawals
+	•	Transfers
+	5.	Freeze one account and show failure cases
+	6.	Deactivate one customer and block transactions
+	7.	Print:
+	•	Account balances
+	•	Last transaction status
+	•	Bank total funds
+
+⸻
+
+❗ Error Handling Rules
+	•	Withdrawal more than balance → ❌ fail
+	•	Transfer from frozen account → ❌ fail
+	•	Deposit into closed account → ❌ fail
+	•	Underage customer → ❌ fail
+	•	Minimum balance violation → ❌ fail
+
+Each failure must:
+	•	Create a failed transaction
+	•	Print a clear reason
